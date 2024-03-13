@@ -21,6 +21,7 @@ Some food for thought (a.k.a., nice to have's)
 What would happen if we added messages in another protocol / format?
 
 ==>Those messages will be ignored. And may be counted in real world.
+
 What would happen if the message rate exceeded your CPU capacity?
 
 ==> the messages starts getting dropped when pipe is full and processor is slow in consuming because its already running at 100% CPU 
