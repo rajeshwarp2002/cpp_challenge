@@ -15,3 +15,12 @@ Approach:
 ==========
 The trick here to match request and response is to use "X-Trace-ID" header. This is common in request and response. So build a transaction map that is keyed by Trace-ID and on response delete the entry from map.
 This map stores the URL. On response, get URL from this map and store in urlMap which is keyed by URL and status code(status code extracted from response)
+
+Some food for thought (a.k.a., nice to have's)
+==============
+What would happen if we added messages in another protocol / format?
+==>Those messages will be ignored. And may be counted in real world.
+What would happen if the message rate exceeded your CPU capacity?
+==> the messages starts getting dropped when pipe is full and processor is slow in consuming because its already running at 100% CPU 
+What would happen if some messages never got a response?
+==> the transaction table which holds temporary state need to timeout the requests, so that we dont leak memory in transaction table.
